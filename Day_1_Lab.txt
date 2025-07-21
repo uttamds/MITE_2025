@@ -18,3 +18,7 @@ Write a program using a while loop to accept any integer and display its square.
 Q3:
 
 #write a function in python that accepts an integer param (n) and displays your name n times
+
+Q4:
+
+Write a program to accept names of 5 cities in a list and display in reverse order  (you can use google to look for hints)
