@@ -1,3 +1,5 @@
+Q1:
+
 Write a program in python to display all the pairs in the list d = [1,2,3,4]
 
 expected output: 
@@ -9,6 +11,10 @@ expected output:
 2,2  and so on
 
 
-
+Q2:
 
 Write a program using a while loop to accept any integer and display its square.   The program will break if a negative number is entered.  The pogram continuous infintely as long as positive number is entered.
+
+Q3:
+
+#write a function in python that accepts an integer param (n) and displays your name n times
