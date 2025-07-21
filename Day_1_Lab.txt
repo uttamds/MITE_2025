@@ -22,3 +22,7 @@ Q3:
 Q4:
 
 Write a program to accept names of 5 cities in a list and display in reverse order  (you can use google to look for hints)
+
+Q5:
+
+Accept 10 int from user.  Display the sum of all the even numbers.  (The odd numbers are ignored)
