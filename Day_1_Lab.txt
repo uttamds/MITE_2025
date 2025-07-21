@@ -7,3 +7,8 @@ expected output:
 1,4
 2,1
 2,2  and so on
+
+
+
+
+Write a program using a while loop to accept any integer and display its square.   The program will break if a negative number is entered.  The pogram continuous infintely as long as positive number is entered.
