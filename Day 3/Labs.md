@@ -28,5 +28,9 @@ Output: False
 
 Hint: Use sets and set intersection.
 
+## 4
+Using map() function create a new list containing cubes of each element in the given list
+d = [3, 4, 5, 4, 2, 6]
+
 
 
