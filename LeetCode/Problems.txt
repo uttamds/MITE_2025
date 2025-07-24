@@ -53,3 +53,16 @@ def isPalindrome(s):
 
     return True
 ============================
+
+
+
+=>Remove non-alpha numeric char from a string
+
+============
+
+input_str = "Hello, World! 123."
+cleaned = remove_non_alphanumerics(input_str)
+print(cleaned)  # Output: HelloWorld123
+
+
+
