@@ -16,7 +16,11 @@ def strStr(haystack: str, needle: str) -> int:
 
 
 Move Zeroes
+==============
 
+algorith used: two pointers
+
+The two-pointer technique is a common algorithmic approach, especially useful when dealing with arrays or lists. It involves using two pointers (variables that store indices or positions) to traverse the data structure. These pointers can move towards each other, move in the same direction, or have different speeds, allowing for efficient comparisons and manipulations of elements. 
 ================
 
 def moveZeroes(nums):
