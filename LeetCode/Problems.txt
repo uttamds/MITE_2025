@@ -36,3 +36,20 @@ def moveZeroes(nums):
     for i in range(insert_pos, len(nums)):
         nums[i] = 0
 ===================
+
+3. Valid Palindrome (LeetCode #125)
+-----------------
+
+def isPalindrome(s):
+    s = ''.join(c.lower() for c in s if c.isalnum())
+
+    left, right = 0, len(s) - 1
+
+    while left < right:
+        if s[left] != s[right]:
+            return False
+        left += 1
+        right -= 1
+
+    return True
+============================
