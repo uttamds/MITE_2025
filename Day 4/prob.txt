@@ -1,0 +1,8 @@
+Please solve on Leetcode and submit
+
+Read relevant theory as needed using GeekForGeeks
+
+353	String, Stack, Greedy	https://leetcode.com/problems/minimum-add-to-make-parentheses-valid	Medium																						
+354	Array, Dynamic Programming, Greedy, Sorting	https://leetcode.com/problems/maximum-length-of-pair-chain	Medium																						
+355	Depth-First Search, Breadth-First Search, Union Find, Graph	https://leetcode.com/problems/possible-bipartition	Medium																						
+356	Array, Hash Table, Greedy, Heap (Priority Queue)	https://leetcode.com/problems/split-array-into-consecutive-subsequences	Medium		
