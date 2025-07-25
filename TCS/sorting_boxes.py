@@ -1,77 +1,67 @@
-def solve():
-    n, k = map(int, input().split())
-    parcels = list(map(int, input().split()))
+size, k = map(int, input().split())
+parcel = list(map(int, input().split()))
 
-    # Adjust k to be 0-indexed
-    k -= 1
+# Initial calculation of effort
+min_val = min(parcel)
+max_val = max(parcel)
+k_val = parcel[k-1]
+effort = min_val * k_val + min_val * max_val
 
-    # Create the target sorted order
-    sorted_parcels = sorted(parcels)
-    heaviest_parcel = sorted_parcels[-1]
+# Swap elements: min_val with parcel[k-1], and max_val with min_val's original position
+t1 = min_val
+t2 = max_val
+t3 = k_val
 
-    target_arrangement = [0] * n
-    target_arrangement[k] = heaviest_parcel
+l1 = parcel.index(t1)  # index of min_val
+l2 = parcel.index(t2)  # index of max_val
 
-    remaining_sorted = sorted_parcels[:-1] # Exclude the heaviest parcel
-    
-    current_remaining_index = 0
-    for i in range(n):
-        if i == k:
-            continue
-        target_arrangement[i] = remaining_sorted[current_remaining_index]
-        current_remaining_index += 1
+# Perform swaps
+parcel[k-1], parcel[l1], parcel[l2] = t2, t3, t1
 
-    # Map current positions to their sorted target positions
-    # and also map values to their original indices
-    pos_map = {parcels[i]: i for i in range(n)}
-    
-    total_effort = 0
-    visited = [False] * n
+# Remove the max parcel (max_val)
+parcel.remove(max(parcel))
 
-    for i in range(n):
-        if visited[i] or parcels[i] == target_arrangement[i]:
-            continue
+# Sort a copy of parcel
+lst1 = sorted(parcel)
 
-        # Start a new cycle
-        cycle_size = 0
-        current_cycle_min_weight = float('inf')
-        current_cycle_sum_weights = 0
-        
-        j = i
-        while not visited[j]:
-            visited[j] = True
-            current_cycle_min_weight = min(current_cycle_min_weight, parcels[j])
-            current_cycle_sum_weights += parcels[j]
-            
-            # Find the target position for the parcel at parcels[j]
-            # This is slightly tricky because target_arrangement is not a simple sort.
-            # We need to find the index of the parcel[j] in the target_arrangement.
-            
-            # We need to find the *current* index of the element that should be at this position
-            # This is where the mapping from the original positions to the sorted position is required.
+# Remove elements from parcel where parcel[i] == lst1[i]
+# Use a while loop carefully because of removing items during iteration
+i = 0
+while i < len(parcel):
+    if parcel[i] == lst1[i]:
+        parcel.pop(i)
+        lst1.pop(i)
+    else:
+        i += 1
 
-            # We need to find where parcels[j] should go in the final sorted arrangement.
-            # It's not as simple as target_arrangement.index(parcels[j]) because of the k exception
-            
-            # Let's rebuild the pos_map for the target arrangement for easier lookup
-            target_pos_map = {target_arrangement[x]: x for x in range(n)}
-            
-            j = target_pos_map[parcels[j]] # Find the position where parcels[j] should be
-            cycle_size += 1
+# Continue processing until parcel is empty
+while parcel:
+    i = len(parcel) - 1
+    current_max = max(parcel)
+    if parcel[i] == current_max:
+        # do nothing (pass)
+        pass
+    else:
+        if parcel[i] != min(parcel):
+            # Add effort according to given formula
+            effort += min(parcel) * parcel[i] + min(parcel) * max(parcel)
+           
+            # Swap current element with min and max positions
+            t1 = min(parcel)
+            t2 = max(parcel)
+            t3 = parcel[i]
 
-        # Now, calculate the minimum effort for this cycle
-        current_cycle_sum_weights -= current_cycle_min_weight
+            l1 = parcel.index(t1)
+            l2 = parcel.index(t2)
 
-        # Option 1: Use the local minimum within the cycle
-        cost1 = current_cycle_sum_weights + current_cycle_min_weight * (cycle_size - 1)
+            parcel[i], parcel[l1], parcel[l2] = t2, t3, t1
+        else:
+            effort += min(parcel) * max(parcel)
+            parcel.remove(max(parcel))
 
-        # Option 2: Use the overall minimum parcel as an intermediary
-        overall_min_weight = sorted_parcels[0]
-        cost2 = overall_min_weight * (cycle_size + 1) + current_cycle_sum_weights + 2 * current_cycle_min_weight
+    # If parcel[i] was max, remove it here?
+    if parcel and parcel[-1] == max(parcel):
+        parcel.pop()
 
-        total_effort += min(cost1, cost2)
-
-    print(total_effort)
-
-# Example Usage:
-# solve()
+print(effort)
+ 
