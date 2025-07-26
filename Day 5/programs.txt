@@ -1,0 +1,8 @@
+414	Array, Queue, Sorting, Simulation	https://leetcode.com/problems/reveal-cards-in-increasing-order	Medium																						
+415	Array, Two Pointers, Greedy, Sorting	https://leetcode.com/problems/boats-to-save-people	Medium																						
+416	Array, Hash Table, Divide and Conquer, Tree, Binary Tree	https://leetcode.com/problems/construct-binary-tree-from-preorder-and-postorder-traversal	Medium																						
+417	Array, Dynamic Programming, Binary Indexed Tree	https://leetcode.com/problems/count-number-of-teams	Medium																						
+418	Hash Table, String, Bit Manipulation, Sliding Window, Rolling Hash, Hash Function	https://leetcode.com/problems/repeated-dna-sequences	Medium																						
+419	Array, Hash Table, String	https://leetcode.com/problems/find-and-replace-pattern	Medium																						
+420	Depth-First Search, Breadth-First Search, Union Find, Graph	https://leetcode.com/problems/number-of-operations-to-make-network-connected	Medium																						
+421	Array, Divide and Conquer, Sorting, Heap (Priority Queue), Merge Sort, Bucket Sort, Radix Sort, Counting Sort	https://leetcode.com/problems/sort-an-array	Medium																						
