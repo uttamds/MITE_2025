@@ -6,3 +6,110 @@
 419	Array, Hash Table, String	https://leetcode.com/problems/find-and-replace-pattern	Medium																						
 420	Depth-First Search, Breadth-First Search, Union Find, Graph	https://leetcode.com/problems/number-of-operations-to-make-network-connected	Medium																						
 421	Array, Divide and Conquer, Sorting, Heap (Priority Queue), Merge Sort, Bucket Sort, Radix Sort, Counting Sort	https://leetcode.com/problems/sort-an-array	Medium																						
+==========================
+Solution for reveal-cards
+=============================
+Great question!
+
+You're referring to a **famous deck reveal problem** — often seen in algorithm challenges — where we **rearrange a deck of cards** so that when we perform a specific sequence of operations, the cards are revealed in **increasing order**.
+
+---
+
+## 🎯 The Problem
+
+You’re given a deck of cards (integers):
+
+```
+deck = [17, 13, 11, 2, 3, 5, 7]
+```
+
+You want to **reorder this deck** so that if you follow this procedure:
+
+1. Reveal the top card.
+2. Move the next top card to the bottom of the deck.
+3. Repeat steps 1 and 2 until all cards are revealed,
+
+… the revealed cards come out in **increasing order**.
+
+---
+
+## ✅ Expected Output
+
+The final reordered deck is:
+
+```
+[2, 13, 3, 11, 5, 17, 7]
+```
+
+→ So that when we simulate the "reveal-top, move-next-to-bottom" process, we get:
+
+```
+2 → 3 → 5 → 7 → 11 → 13 → 17
+```
+
+---
+
+## 🔁 Strategy to Achieve This
+
+### Key Insight:
+
+You work **backward**.
+
+To get increasing order during the reveal, we reverse the steps:
+
+1. Start with a **sorted deck in ascending order**: `[2, 3, 5, 7, 11, 13, 17]`
+2. Simulate the process **in reverse**:
+
+   * Take the largest card,
+   * If there's anything in the result deck, move its last element to the front (simulate "bottom to top"),
+   * Then insert the current card at the front.
+
+---
+
+## 🧠 Python Code (Reverse Simulation)
+
+```python
+from collections import deque
+
+deck = [17, 13, 11, 2, 3, 5, 7]
+sdeck = sorted(deck)  # ascending
+
+dq = deque()
+
+for card in reversed(sdeck):
+    if dq:
+        dq.appendleft(dq.pop())  # move last to front
+    dq.appendleft(card)
+
+print(list(dq))
+```
+
+### ✅ Output:
+
+```
+[2, 13, 3, 11, 5, 17, 7]
+```
+
+---
+
+## 📦 Explanation of Steps
+
+Starting with sorted: `[2, 3, 5, 7, 11, 13, 17]` (go in reverse)
+
+* Insert 17 → `[17]`
+* Move 17 to front, insert 13 → `[13, 17]`
+* Move 17 to front, insert 11 → `[11, 13, 17]`
+* Move 17 to front, insert 7 → `[7, 11, 13, 17]`
+* Move 17 to front, insert 5 → `[5, 7, 11, 13, 17]`
+* Move 17 to front, insert 3 → `[3, 5, 7, 11, 13, 17]`
+* Move 17 to front, insert 2 → `[2, 3, 5, 7, 11, 13, 17]`
+
+But because we rotated the elements in reverse, it becomes:
+
+```
+[2, 13, 3, 11, 5, 17, 7]
+```
+
+
+---
+
